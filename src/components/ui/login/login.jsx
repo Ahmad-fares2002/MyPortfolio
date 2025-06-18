@@ -54,6 +54,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("user"); // Role state is not directly used in the provided UI but kept for functionality
   const [showPassword, setShowPassword] = useState(false);
+  const API_URL = import.meta.env.VITE_BASE_URL;
+
   const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -66,7 +68,7 @@ const Login = () => {
     console.log("Login");
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -86,7 +88,7 @@ const Login = () => {
 
   const signup = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch(`${API_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, role }),

@@ -10,18 +10,20 @@ export default function HomePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const isAdmin = user.role == "admin";
+  const API_URL = import.meta.env.VITE_BASE_URL;
   useEffect(() => {
+    console.log(API_URL);
     fetchSections();
   }, []);
   const fetchSections = async (content) => {
-    const res = await fetch("http://localhost:5000/api/sections/");
+    const res = await fetch(`${API_URL}/api/sections/`);
     const data = await res.json();
     console.log(data);
     setContent(data[0].content);
     setTitle(data[0].title);
   };
   const updateContent = async (title, content) => {
-    const res = await fetch(`http://localhost:5000/api/sections/${title}`, {
+    const res = await fetch(`${API_URL}//api/sections/${title}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
