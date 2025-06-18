@@ -7,6 +7,7 @@ export default function AboutMeSection() {
     <Box
       sx={{
         py: { xs: 3, md: 6 },
+        px: 10,
         display: "flex",
         gap: { xs: 5, md: 12 },
         justifyContent: "center",
