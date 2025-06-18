@@ -55,8 +55,14 @@ export default function Links({ color }) {
       >
         About
       </Link>
-      <Button href="" value="text">
-        Contact
+      <Button
+        href=""
+        value="text"
+        onClick={() => {
+          localStorage.setItem("user", "");
+        }}
+      >
+        logout
       </Button>
     </Box>
   );

@@ -1,12 +1,16 @@
-import { Box, Button } from "@mui/material";
 import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./styles/App.css";
-import Header from "./components/ui/HomePage/Header";
-import AboutMe from "./components/ui/AboutMe/AboutMe";
-import Footer from "./components/ui/HomePage/Footer";
-import HomePage from "./components/ui/HomePage";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import Login from "./components/ui/login/login";
+import AppLayout from "./AppLayout";
 
 const theme = createTheme({
   fontSize: 200,
@@ -54,13 +58,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/aboutme" element={<AboutMe />} />
-          {/* Add more routes as needed */}
-        </Routes>
-        <Footer />
+        <AppLayout />
       </Router>
     </ThemeProvider>
   );
