@@ -74,9 +74,11 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
-      console.log(data);
+
       if (res.ok) {
-        localStorage.setItem("user", data);
+        console.log("data");
+        console.log(data.user.role);
+        localStorage.setItem("user", data.user.role);
         navigate("/");
       } else {
         alert(data.message);

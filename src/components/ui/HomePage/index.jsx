@@ -6,13 +6,15 @@ import ContactMe from "./ContactMe";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
-  const user = localStorage.getItem("user");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const isAdmin = user.role == "admin";
+  const userRole = localStorage.getItem("user");
+  const isAdmin = userRole == "admin";
+
   const API_URL = import.meta.env.VITE_BASE_URL;
   useEffect(() => {
-    console.log(API_URL);
+    console.log(isAdmin);
+
     fetchSections();
   }, []);
   const fetchSections = async (content) => {
@@ -23,11 +25,11 @@ export default function HomePage() {
     setTitle(data[0].title);
   };
   const updateContent = async (title, content) => {
-    const res = await fetch(`${API_URL}//api/sections/${title}`, {
+    const res = await fetch(`${API_URL}/api/sections/${1}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-role": user.role,
+        "x-role": isAdmin ? "admin" : "user",
       },
       body: JSON.stringify({ title, content }),
     });

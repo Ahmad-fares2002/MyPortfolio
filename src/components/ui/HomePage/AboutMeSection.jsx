@@ -15,9 +15,7 @@ export default function AboutMeSection({
     await updateContent(newTitle, newContent);
     setIsEditing(false);
   };
-  useEffect(() => {
-    console.log(localStorage.getItem("user"));
-  }, []);
+  // useEffect(() => {}, []);
 
   return (
     <Box
